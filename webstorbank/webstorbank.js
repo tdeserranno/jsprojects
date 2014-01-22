@@ -9,23 +9,29 @@ window.onload = function() {
   var sMsg = '';//bericht aan gebruiker
   var sNaam = 'nieuwe klant';
   var nSaldo = 0;
-  //TEST COOKIE
-  if (getCookie('klantnaam')) {
-    sNaam = getCookie('klantnaam');
-    nSaldo = parseFloat(getCookie('saldo')).toFixed(2);
-    //bericht
-    sMsg += 'Welkom ' + sNaam + ',';
-    sMsg += 'uw saldo bedraagt ' + nSaldo + ' Euro';
-    //knop sluit rekening
-    var eKnop = maakKnop('Sluit rekening');
-    eKnop.addEventListener('click', rekeningSluiten);
+  //TEST WEB STORAGE BROWSER SUPPORT
+  if (localStorage) {
+    //TEST LOCAL STORAGE VARIABLE
+    if (localStorage.klantnaam) {
+      sNaam = localStorage.klantnaam;
+      nSaldo = parseFloat(localStorage.saldo).toFixed(2);
+      //bericht
+      sMsg += 'Welkom ' + sNaam + ',';
+      sMsg += 'uw saldo bedraagt ' + nSaldo + ' Euro';
+      //knop sluit rekening
+      var eKnop = maakKnop('Sluit rekening');
+      eKnop.addEventListener('click', rekeningSluiten);
+    } else {
+      //bericht
+      sMsg += 'Welkom beste bezoeker. ';
+      sMsg += 'Als u bij ons een nieuwe rekening opent ontvangt u een startsaldo van 100 Euro!';
+      //knop open rekening
+      var eKnop = maakKnop('Open rekening');
+      eKnop.addEventListener('click', rekeningOpenen);
+    }
   } else {
-    //bericht
-    sMsg += 'Welkom beste bezoeker. ';
-    sMsg += 'Als u bij ons een nieuwe rekening opent ontvangt u een startsaldo van 100 Euro!';
-    //knop open rekening
-    var eKnop = maakKnop('Open rekening');
-    eKnop.addEventListener('click', rekeningOpenen);
+    //gebruik cookies
+    toonWaarschuwing('Deze browser ondersteund geen Web Storage. Gebruik de CookieBank.');
   }
   
   //GENERISCHE DOM ELEMENTEN
@@ -60,22 +66,21 @@ function maakKnop(tekst) {
   eKnop.setAttribute('type', 'button');
   return eKnop;
 }
-/**Vraagt klantnaam via prompt en maakt cookies voor klantnaam en saldo en
- * ververst de pagina
+/**Vraagt klantnaam via prompt en maakt webstorage variabelen voor klantnaam
+ * en saldo en ververst de pagina
  */
 function rekeningOpenen() {
   var sNaam = window.prompt('Uw naam ?','');
   if (sNaam !== '' && sNaam !== null) {
-    setCookie('klantnaam', sNaam, 100);
-    setCookie('saldo', 100, 100);
+    localStorage.klantnaam = sNaam;
+    localStorage.saldo = 100;
     window.history.go(0);
   }
 }
-/**Wist cookies klantnaam en saldo en vervest de pagina
+/**Wist webstorage klantnaam en saldo en vervest de pagina
  */
 function rekeningSluiten() {
-  clearCookie('klantnaam');
-  clearCookie('saldo');
+  localStorage.clear();
   window.history.go(0);
 }
 /**geld storting of afhaling
@@ -87,7 +92,7 @@ function berekenen(bewerking) {
   var nNieuwSaldo = 0;
   var eBedrag = document.getElementById('bedrag');
   var sBedrag = eBedrag.value;
-  var sSaldo = getCookie('saldo');
+  var sSaldo = localStorage.saldo;
   var sBericht = '';
   var regEx = /,/;
   sBedrag = sBedrag.replace(regEx, '.');
@@ -112,7 +117,7 @@ function berekenen(bewerking) {
         eBedrag.focus();
         toonWaarschuwing(sBericht);
       } else {
-        setCookie('saldo', nNieuwSaldo, 100);
+        localStorage.saldo = nNieuwSaldo;
         window.history.go(0);
         eBedrag.value = '';
       }
