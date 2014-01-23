@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="iso-8859-1">
+<title>JS PF project: Quiz van de week</title>
+<link rel="stylesheet" href="quiz.css">
+<script src="json2.js" type="text/javascript"></script>
+<script src="quiz.json" type="text/javascript"></script>
+<script src="quiz.js" type="text/javascript"></script>
+</head>
+<body>
+<h1>JS PF project: Quiz van de week</h1>
+<p> De gebruiker test zijn parate kennis aan de hand van een aantal multiple choice vragen. De quiz wijzigt elke week, qua inhoud en aantal vragen. Sommige vragen hebben ook een media bestand (figuur, video...), andere niet. <br>
+  Als de gebruiker een keuze maakt, wordt er onmiddellijk aangegeven of het antwoord goed/slecht was en wordt een begeleidende tekst getoond. Een score wordt bijgehouden en getoond na de laatste vraag. </p>
+<p>De gegevens voor de quiz worden aangeleverd in JSON formaat, Je krijgt hier een voorbeeld JSON string in het bestand quiz.json. Je mag echter veronderstellen dat in productieomstandigheden de JSON string dynamisch geproduceerd wordt door een serverside script (PHP, .Net, Java). Deze quiz is ook niet streng beveiligd: iemand die code HTML en Javascript kan lezen, kan het correcte antwoord achterhalen. </p>
+<div id="quiz"></div>
+</body>
+</html>
