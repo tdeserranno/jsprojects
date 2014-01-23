@@ -51,7 +51,7 @@ var oFouten = {
       if (elem.value !== '') {
         var aD = elem.value;
         var vD = document.frmVlucht.vertrekdatum.value;
-        var dag = 24 * 60 * 60;
+        var dag = 24 * 60 * 60 * 1000;//1 dag in ms
         //retourdatum
         var arrD1 = aD.split('/');
         var D1 = new Date(parseInt(arrD1[2]), parseInt(arrD1[1]) - 1, parseInt(arrD1[0]));
@@ -59,7 +59,7 @@ var oFouten = {
         var arrD2 = vD.split('/');
         var D2 = new Date(parseInt(arrD2[2]), parseInt(arrD2[1]) - 1, parseInt(arrD2[0]));
         var verschil = D1 - D2;
-        return (verschil >= dag)
+        return (verschil >= dag);
       } else {
         return true;
       }
