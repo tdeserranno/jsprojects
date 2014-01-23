@@ -164,7 +164,7 @@
     <input type="text" name="vertrekdatum" id="vertrekdatum" size="10"  title="de vertrekdatum (dd/mm/yyyy)"  class="datum required" />
     <br />
     <label for="aankomstL">naar:</label>
-    <select name="aankomstL" id="aankomstL" title="kies de luchthaven waar naartoe u vliegt" class="">
+    <select name="aankomstL" id="aankomstL" title="kies de luchthaven waar naartoe u vliegt" class="aankomstL">
       <option value="" selected="selected">Kies aankomst luchthaven</option>
       <option value="aAAR">Aarhus (AAR) </option>
       <option value="aABZ">Aberdeen (ABZ) </option>
@@ -296,7 +296,7 @@
     </select>
     <br />
     <label for="retourdatum" id="labelRetourdatum">datum retour:</label>
-    <input type="text" name="retourdatum" id="retourdatum" size="10"  title="de datum van terugkeer (dd/mm/yyyy)" class="datum required" />
+    <input type="text" name="retourdatum" id="retourdatum" size="10"  title="de datum van terugkeer (dd/mm/yyyy)" class="retourDatum datum required" />
   </fieldset>
   <fieldset id="passagiers">
     <legend>Passagiers</legend>
@@ -310,7 +310,7 @@
     <input type="text" name="peuters" id="peuters" title="vul het aantal peuters in"  class="aantal" />
     <br />
     <label for="passagier1">Passagier 1:</label>
-    <input type="text" name="passagier1" id="passagier1" title="voornaam en famlilienaam van de passagier"  class="text" />
+    <input type="text" name="passagier1" id="passagier1" title="voornaam en famlilienaam van de passagier"  class="text required" />
     <br />
     <span id="extras"></span>
   </fieldset>
