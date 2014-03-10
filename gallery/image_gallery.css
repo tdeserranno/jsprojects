@@ -17,13 +17,13 @@ body {
 	height:700px;
 	overflow:auto;
 }
-sidebar {
+aside {
 	float: left;
 	width: 13em;
 	background: #EBEBEB;
 	padding: 15px 0;
 }
-sidebar h1 {
+aside h1 {
 	margin: 0 0.2em;
 	padding: 10px 0;
 	color:#00CCCC
