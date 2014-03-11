@@ -160,13 +160,13 @@ function fnPersoneelslidToevoegen(naam, leeftijd, gehuwd, functie, sexe, aKindna
   persoon.vrienden = 0;
   persoon.id = parseInt((Math.random() * 10000) + 1);
   var aKindNamen = aKindnamen || []; //optioneel argument opvangen
-  var aantalKinderen = aKindnamen.length;
+  var aantalKinderen = aKindNamen.length;
   if (aantalKinderen > 0) {
     persoon.kinderen = []; //maak property
     for (var i = 0; i < aantalKinderen; i++) {
-      if (aKindnamen[i] !== '') {
+      if (aKindNamen[i] !== '') {
         var kind = new Object();
-        kind.naam = aKindnamen[i];
+        kind.naam = aKindNamen[i];
         persoon.kinderen.push(kind);
       }
     }
