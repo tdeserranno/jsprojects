@@ -74,7 +74,18 @@ window.onload = function(){
     } else {
       //ok
       console.log('validation sucessful');
-      fnPersoneelslidToevoegen(sNaam, nLeeftijd, bGehuwd, sFunctie, sSexe, [sKind1, sKind2, sKind3]);
+      var aKidNames = [];
+      if (sKind1 !== '') {
+        aKidNames.push(sKind1);
+      }
+      if (sKind2 !== '') {
+        aKidNames.push(sKind2);
+      }
+      if (sKind3 !== '') {
+        aKidNames.push(sKind3);
+      }
+      fnPersoneelslidToevoegen(sNaam, nLeeftijd, bGehuwd, sFunctie, sSexe, aKidNames);
+//      fnPersoneelslidToevoegen(sNaam, nLeeftijd, bGehuwd, sFunctie, sSexe, [sKind1, sKind2, sKind3]);
       //formulier reset voor volgende toevoeging
       document.frmPersoneelslid.reset()
       eNaam.focus();
