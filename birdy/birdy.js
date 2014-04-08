@@ -135,7 +135,7 @@ function validateField(elem) {
   var bValid = true;
   
   //verberg vorige errormsg
-  hideErrors(elem);
+//  hideErrors(elem);
   //valideer veld
   for (var fout in oFouten) {
     var regEx = new RegExp('(^|\\s)' + fout + '(\\s|$)'); //regex
@@ -187,6 +187,7 @@ function showErrors(elem, aErrors) {
  */
 function hideErrors(elem) {
   var eSibling = elem.nextSibling;
+  console.log(eSibling);
   if (eSibling && eSibling.nodeName == 'UL' && eSibling.className == 'fouten') {
     elem.parentNode.removeChild(eSibling);
   }
